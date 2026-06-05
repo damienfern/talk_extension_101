@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" font-family="'Trebuchet MS', 'Nunito', sans-serif">
+  <defs>
+    <marker id="arrow-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#888888"/>
+    </marker>
+    <marker id="arrow-loop" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/>
+    </marker>
+  </defs>
+
+  <!-- Grouping: request loop (Master -> RINIT -> Bootstrap -> Run Code -> RSHUTDOWN) -->
+  <rect x="138" y="120" width="732" height="150" rx="14" fill="none" stroke="#888888" stroke-width="2" stroke-dasharray="6 5" opacity="0.85"/>
+  <rect x="294" y="97" width="420" height="24" rx="6" fill="#fafaf8" stroke="#888888" stroke-width="1.2"/>
+  <text x="504" y="114" text-anchor="middle" font-size="13" fill="#4a4a4a" font-style="italic">boucle : répétée à chaque requête (bootstrap applicatif inclus)</text>
+
+  <!-- 1x per worker labels -->
+  <rect x="25" y="143" width="90" height="22" rx="6" fill="#fafaf8" stroke="#1a4fa0" stroke-width="1.2"/>
+  <text x="70" y="159" text-anchor="middle" font-size="12" fill="#1a4fa0">1x par worker</text>
+  <rect x="889" y="143" width="90" height="22" rx="6" fill="#fafaf8" stroke="#1a4fa0" stroke-width="1.2"/>
+  <text x="934" y="159" text-anchor="middle" font-size="12" fill="#1a4fa0">1x par worker</text>
+
+  <!-- MINIT -->
+  <g>
+    <rect x="20" y="170" width="100" height="90" rx="14" fill="#eef2f8" stroke="#1a4fa0" stroke-width="2.5"/>
+    <text x="70" y="220" text-anchor="middle" font-size="16" font-weight="700" fill="#1a4fa0">MINIT</text>
+  </g>
+  <line x1="120" y1="215" x2="153" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-flow)"/>
+
+  <!-- Master dispatch -->
+  <g>
+    <rect x="153" y="170" width="120" height="90" rx="14" fill="#f5f5f0" stroke="#4a4a4a" stroke-width="2.5"/>
+    <text x="213" y="208" text-anchor="middle" font-size="14" font-weight="700" fill="#3a3a3a">Master</text>
+    <text x="213" y="230" text-anchor="middle" font-size="11" fill="#3a3a3a" opacity="0.85">dispatch requête</text>
+  </g>
+  <line x1="273" y1="215" x2="306" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-flow)"/>
+
+  <!-- RINIT -->
+  <g>
+    <rect x="306" y="170" width="100" height="90" rx="14" fill="#eef4ec" stroke="#1a7a4a" stroke-width="2.5"/>
+    <text x="356" y="220" text-anchor="middle" font-size="15" font-weight="700" fill="#1a7a4a">RINIT</text>
+  </g>
+  <line x1="406" y1="215" x2="439" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-flow)"/>
+
+  <!-- Bootstrap (rejoué à chaque requête) -->
+  <g>
+    <rect x="439" y="170" width="110" height="90" rx="14" fill="#f7eefb" stroke="#7b1fa2" stroke-width="2.5"/>
+    <text x="494" y="212" text-anchor="middle" font-size="14" font-weight="700" fill="#7b1fa2">Bootstrap</text>
+    <text x="494" y="234" text-anchor="middle" font-size="9.5" fill="#7b1fa2" opacity="0.85">à chaque requête</text>
+  </g>
+  <line x1="549" y1="215" x2="582" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-flow)"/>
+
+  <!-- Run Code -->
+  <g>
+    <rect x="582" y="170" width="110" height="90" rx="14" fill="#fdf3f0" stroke="#c0392b" stroke-width="2.5"/>
+    <text x="637" y="220" text-anchor="middle" font-size="15" font-weight="700" fill="#c0392b">Run Code</text>
+  </g>
+  <line x1="692" y1="215" x2="725" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-flow)"/>
+
+  <!-- RSHUTDOWN -->
+  <g>
+    <rect x="725" y="170" width="130" height="90" rx="14" fill="#eef4ec" stroke="#1a7a4a" stroke-width="2.5"/>
+    <text x="790" y="220" text-anchor="middle" font-size="15" font-weight="700" fill="#1a7a4a">RSHUTDOWN</text>
+  </g>
+  <line x1="855" y1="215" x2="888" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-flow)"/>
+
+  <!-- MSHUTDOWN -->
+  <g>
+    <rect x="888" y="170" width="92" height="90" rx="14" fill="#eef2f8" stroke="#1a4fa0" stroke-width="2.5"/>
+    <text x="934" y="220" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1a4fa0">MSHUTDOWN</text>
+  </g>
+
+  <!-- loop back arrow: RSHUTDOWN -> Master -->
+  <path d="M790,260 C790,345 213,345 213,262" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#arrow-loop)"/>
+  <rect x="387" y="353" width="230" height="24" rx="6" fill="#fafaf8" stroke="#c0392b" stroke-width="1.2"/>
+  <text x="502" y="370" text-anchor="middle" font-size="13" fill="#c0392b">requête suivante (même worker)</text>
+</svg>

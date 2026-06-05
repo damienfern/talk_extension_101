@@ -1,0 +1,19 @@
+{
+    "name": "dfernandes/fibonacci",
+    "type": "php-ext",
+    "license": "BSD-3-Clause",
+    "description": "Describe your extension here",
+    "require": {
+        "php": "^8.3"
+    },
+    "php-ext": {
+        "extension-name": "fibonacci",
+        "configure-options": [
+            {
+                "name": "enable-fibonacci",
+                "needs-value": false,
+                "description": "whether to enable fibonacci support"
+            }
+        ]
+    }
+}

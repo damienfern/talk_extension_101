@@ -1,0 +1,349 @@
+/* ============================================
+   Tableau Blanc / Tableau Noir
+   Light : Whiteboard  |  Dark : Chalkboard
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Fredoka+One&family=Kalam:wght@300;400&family=Caveat:wght@500;600;700&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+
+/* ── Thème Tableau Blanc (light — défaut) ──── */
+:root {
+  /* Surfaces */
+  --chalk-bg:      #fafaf8;   /* blanc laiteux, légère chaleur */
+  --chalk-bg-dark: #fafaf8;   /* identique à --chalk-bg */
+
+  /* Texte & couleurs marqueurs */
+  --chalk-text:    #1c1c1c;   /* marqueur noir */
+  --chalk-accent:  #1a4fa0;   /* marqueur bleu  → titres, gras */
+  --chalk-strong:  #c0392b;   /* marqueur rouge → strong */
+  --chalk-code:    #1a7a4a;   /* marqueur vert  → code */
+  --chalk-link:    #1565c0;   /* bleu lien */
+  --chalk-em:      #7b1fa2;   /* marqueur violet → italique */
+
+  /* Composants */
+  --code-bg:           rgba(0,   0,   0,   0.05);
+  --code-border:       rgba(0,   0,   0,   0.10);
+  --code-block-bg:     rgba(0,   0,   0,   0.04);
+  --code-block-border: rgba(0,   0,   0,   0.10);
+  --code-filename-bg:  rgba(0,   0,   0,   0.05);
+  --code-filename-border: rgba(0, 0,  0,   0.10);
+  --table-th-border:   rgba(0,   0,   0,   0.30);
+  --table-td-border:   rgba(0,   0,   0,   0.10);
+  --kbd-bg:            rgba(0,   0,   0,   0.06);
+  --kbd-border:        rgba(0,   0,   0,   0.22);
+  --kbd-shadow:        rgba(0,   0,   0,   0.18);
+  --nav-bg:            rgba(244, 242, 240, 0.96);
+  --nav-border:        rgba(0,   0,   0,   0.08);
+  --icon-color:        rgba(28,  28,  28,  0.55);
+  --icon-hover-bg:     rgba(0,   0,   0,   0.07);
+  --page-info-color:   rgba(28,  28,  28,  0.32);
+  --blockquote-border: rgba(26,  79,  160, 0.35);
+  --blockquote-color:  rgba(28,  28,  28,  0.68);
+  --hr-color:          rgba(0,   0,   0,   0.12);
+  --footnote-color:    rgba(28,  28,  28,  0.48);
+  --footnote-sep:      rgba(0,   0,   0,   0.12);
+  --h1-border:         rgba(26,  79,  160, 0.22);
+  --code-shadow:       0 2px 8px rgba(0, 0, 0, 0.06);
+  --list-marker:       #1a4fa0;
+
+  /* Couleurs des 4 cadres (build / déclaration C / déclaration PHP / exécution) */
+  --box-build:      #1a4fa0;   /* bleu */
+  --box-decl-c:     #1a7a4a;   /* vert */
+  --box-decl-php:   #7b1fa2;   /* violet */
+  --box-exec:       #c0392b;   /* rouge */
+}
+
+/* ── Thème Tableau Noir (dark) ─────────────── */
+html.dark {
+  --chalk-bg:      #2c4a2c;
+  --chalk-bg-dark: #2c4a2c;
+  --chalk-text:    #f0ece0;
+  --chalk-accent:  #f5e2a0;
+  --chalk-strong:  #f5e2a0;
+  --chalk-code:    #98d098;
+  --chalk-link:    #a0c8e8;
+  --chalk-em:      #e8a0b0;
+
+  --code-bg:           rgba(0,   0,   0,   0.35);
+  --code-border:       rgba(255, 255, 255, 0.15);
+  --code-block-bg:     rgba(0,   0,   0,   0.45);
+  --code-block-border: rgba(255, 255, 255, 0.18);
+  --code-filename-bg:  rgba(0,   0,   0,   0.30);
+  --code-filename-border: rgba(255, 255, 255, 0.15);
+  --table-th-border:   rgba(255, 255, 255, 0.45);
+  --table-td-border:   rgba(255, 255, 255, 0.12);
+  --kbd-bg:            rgba(255, 255, 255, 0.10);
+  --kbd-border:        rgba(255, 255, 255, 0.35);
+  --kbd-shadow:        rgba(0,   0,   0,   0.30);
+  --nav-bg:            rgba(20,  45,  20,  0.90);
+  --nav-border:        rgba(255, 255, 255, 0.10);
+  --icon-color:        rgba(240, 236, 224, 0.70);
+  --icon-hover-bg:     rgba(255, 255, 255, 0.10);
+  --page-info-color:   rgba(240, 236, 224, 0.40);
+  --blockquote-border: rgba(255, 255, 255, 0.30);
+  --blockquote-color:  rgba(240, 236, 224, 0.80);
+  --hr-color:          rgba(255, 255, 255, 0.20);
+  --footnote-color:    rgba(240, 236, 224, 0.60);
+  --footnote-sep:      rgba(255, 255, 255, 0.15);
+  --h1-border:         rgba(255, 255, 255, 0.30);
+  --code-shadow:       inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+                       0 4px 12px rgba(0, 0, 0, 0.30);
+  --list-marker:       #f5e2a0;
+
+  /* Couleurs des 4 cadres — distinctes en dark (accent et strong valent tous deux #f5e2a0) */
+  --box-build:      #a0c8e8;   /* bleu clair */
+  --box-decl-c:     #98d098;   /* vert */
+  --box-decl-php:   #e8a0b0;   /* rose */
+  --box-exec:       #f5e2a0;   /* jaune */
+}
+
+/* ── Taille du code (défaut Slidev : 12px, trop petit en salle) ── */
+:root {
+  --slidev-code-font-size: 25px;
+  --slidev-code-line-height: 30px;
+}
+
+/* ── Fond & base ────────────────────────────── */
+.slidev-layout {
+  background-color: var(--chalk-bg) !important;
+  background-image: none !important;
+  color: var(--chalk-text) !important;
+  font-family: 'Nunito', 'Trebuchet MS', sans-serif;
+  font-size: 1.05em;
+  line-height: 1.6;
+}
+
+/* Slide de couverture légèrement différente */
+.slidev-layout.cover,
+.slidev-layout.intro {
+  background-color: var(--chalk-bg-dark) !important;
+  background-image: none !important;
+  color: var(--chalk-text) !important;
+}
+
+/* ── Titres ─────────────────────────────────── */
+h1 {
+  font-family: 'Fredoka One', sans-serif !important;
+  color: var(--chalk-accent) !important;
+  font-size: 2.4em !important;
+  font-weight: 700;
+  border-bottom: 2px solid var(--h1-border);
+  padding-bottom: 0.2em;
+  margin-bottom: 0.8em;
+  background: none !important;
+  -webkit-text-fill-color: var(--chalk-accent) !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  text-shadow: none;
+}
+
+html.dark h1 {
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.slidev-layout.cover h1 {
+  font-size: 3.2em !important;
+  border-bottom: none;
+}
+
+.slidev-layout.center h1 {
+  border-bottom: none;
+}
+
+html.dark .slidev-layout.cover h1 {
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  font-family: 'Fredoka One', sans-serif !important;
+  color: var(--chalk-accent) !important;
+  font-size: 1.9em;
+}
+
+h3, h4, h5, h6 {
+  font-family: 'Fredoka One', sans-serif !important;
+  color: var(--chalk-accent) !important;
+}
+
+/* ── Texte courant ──────────────────────────── */
+strong {
+  color: var(--chalk-strong);
+  font-weight: 700;
+}
+
+em {
+  color: var(--chalk-em);
+  font-style: italic;
+}
+
+a {
+  color: var(--chalk-link) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, var(--chalk-link) 45%, transparent);
+}
+
+a:hover {
+  text-decoration-color: var(--chalk-link);
+}
+
+/* ── Listes ─────────────────────────────────── */
+ul li::marker,
+ol li::marker {
+  color: var(--list-marker);
+}
+
+/* ── Code inline ────────────────────────────── */
+:not(pre) > code {
+  background: var(--code-bg) !important;
+  color: var(--chalk-code) !important;
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+  font-size: 1.05em;
+  border: 1px solid var(--code-border);
+}
+
+/* ── Blocs de code ──────────────────────────── */
+.slidev-code,
+div.shiki,
+pre {
+  background: var(--code-block-bg) !important;
+  border: 1px solid var(--code-block-border) !important;
+  border-radius: 6px !important;
+  box-shadow: var(--code-shadow) !important;
+}
+
+.slidev-code .line {
+  border-left: none !important;
+}
+
+/* Retour à la ligne automatique pour les lignes trop longues */
+.slidev-code,
+.shiki,
+.shiki code {
+  white-space: pre-wrap !important;
+  overflow-wrap: break-word;
+}
+
+/* Les numéros de ligne ne doivent jamais wrapper (hérite sinon de overflow-wrap
+   ci-dessus, et w-4 est trop étroit pour --slidev-code-font-size: 25px) */
+.slidev-code-line-numbers .slidev-code code .line::before {
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  width: auto !important;
+  min-width: 1.6em;
+}
+
+/* Barre de fichier / titre du snippet */
+.slidev-code-wrapper .filename,
+.slidev-code .filename {
+  background: var(--code-filename-bg) !important;
+  color: var(--chalk-accent) !important;
+  border-bottom: 1px solid var(--code-filename-border) !important;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ── Tableaux ───────────────────────────────── */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th {
+  border-bottom: 2px solid var(--table-th-border) !important;
+  color: var(--chalk-accent) !important;
+  padding: 0.5em 1em;
+  font-family: 'Caveat', cursive;
+  font-size: 1.1em;
+}
+
+table td {
+  border-bottom: 1px solid var(--table-td-border) !important;
+  padding: 0.5em 1em;
+  color: var(--chalk-text);
+}
+
+/* ── Touches clavier ────────────────────────── */
+kbd {
+  background: var(--kbd-bg) !important;
+  border: 1px solid var(--kbd-border) !important;
+  border-bottom-width: 2px !important;
+  border-radius: 4px !important;
+  padding: 0.1em 0.5em !important;
+  color: var(--chalk-text) !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-size: 0.85em !important;
+  box-shadow: 0 2px 0 var(--kbd-shadow) !important;
+}
+
+/* ── Barre de navigation ────────────────────── */
+.slidev-nav {
+  background: var(--nav-bg) !important;
+  border-top: 1px solid var(--nav-border) !important;
+}
+
+.slidev-nav-progress-bar {
+  background: var(--chalk-accent) !important;
+  opacity: 0.6;
+}
+
+/* ── Boutons d'icônes ───────────────────────── */
+.slidev-icon-btn {
+  color: var(--icon-color) !important;
+}
+
+.slidev-icon-btn:hover {
+  color: var(--chalk-text) !important;
+  background: var(--icon-hover-bg) !important;
+}
+
+/* ── Numéro de slide ────────────────────────── */
+.slidev-page-info {
+  color: var(--page-info-color) !important;
+}
+
+/* ── Blockquotes ────────────────────────────── */
+blockquote {
+  border-left: 3px solid var(--blockquote-border);
+  padding-left: 1em;
+  color: var(--blockquote-color);
+  font-style: italic;
+}
+
+/* ── Séparateurs ────────────────────────────── */
+hr {
+  border: none;
+  border-top: 1px solid var(--hr-color);
+  margin: 1.5em 0;
+}
+
+/* ── Footnotes ──────────────────────────────── */
+.footnotes {
+  color: var(--footnote-color) !important;
+}
+
+.footnotes-sep {
+  border-color: var(--footnote-sep) !important;
+}
+
+/* ── Police manuscrite ──────────────────────── */
+.handwritten {
+  font-family: 'Pinyon Script', cursive !important;
+  font-size: 1.8em !important;
+}
+
+.handwritten-sm {
+  font-family: 'Caveat', cursive !important;
+  font-weight: 600 !important;
+  font-size: 1.3em !important;
+}
+
+/* ── Slide 1 : annule le grisé du sous-titre ── */
+.slidev-layout.no-subtitle-style h1 + p {
+  color: inherit !important;
+  opacity: 1 !important;
+  font-size: 1.8em !important;
+}
+
+.slidev-layout.no-subtitle-style h1 {
+  font-size: 5em !important;
+}

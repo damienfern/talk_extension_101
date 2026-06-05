@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" font-family="'Trebuchet MS', 'Nunito', sans-serif">
+  <defs>
+    <marker id="arrow-fw2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#888888"/>
+    </marker>
+    <marker id="arrow-loop2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/>
+    </marker>
+  </defs>
+
+  <!-- Grouping: request loop (frankenphp_handle_request -> Run Code), répétée pour chaque requête tant que le worker vit -->
+  <rect x="414" y="120" width="303" height="150" rx="14" fill="none" stroke="#888888" stroke-width="2" stroke-dasharray="6 5" opacity="0.85"/>
+  <rect x="396" y="97" width="340" height="24" rx="6" fill="#fafaf8" stroke="#888888" stroke-width="1.2"/>
+  <text x="566" y="114" text-anchor="middle" font-size="13" fill="#4a4a4a" font-style="italic">boucle : répétée à chaque requête HTTP sur le worker</text>
+
+  <!-- 1x per worker labels -->
+  <rect x="25" y="143" width="90" height="22" rx="6" fill="#fafaf8" stroke="#1a4fa0" stroke-width="1.2"/>
+  <text x="70" y="159" text-anchor="middle" font-size="12" fill="#1a4fa0">1x par worker</text>
+  <rect x="889" y="143" width="90" height="22" rx="6" fill="#fafaf8" stroke="#1a4fa0" stroke-width="1.2"/>
+  <text x="934" y="159" text-anchor="middle" font-size="12" fill="#1a4fa0">1x par worker</text>
+
+  <!-- MINIT -->
+  <g>
+    <rect x="20" y="170" width="100" height="90" rx="14" fill="#eef2f8" stroke="#1a4fa0" stroke-width="2.5"/>
+    <text x="70" y="220" text-anchor="middle" font-size="16" font-weight="700" fill="#1a4fa0">MINIT</text>
+  </g>
+  <line x1="120" y1="215" x2="153" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-fw2)"/>
+
+  <!-- RINIT (1x) -->
+  <g>
+    <rect x="153" y="170" width="100" height="90" rx="14" fill="#eef4ec" stroke="#1a7a4a" stroke-width="2.5"/>
+    <text x="203" y="212" text-anchor="middle" font-size="15" font-weight="700" fill="#1a7a4a">RINIT</text>
+    <text x="203" y="234" text-anchor="middle" font-size="11" fill="#1a7a4a" opacity="0.85">(1x)</text>
+  </g>
+  <line x1="253" y1="215" x2="286" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-fw2)"/>
+
+  <!-- Bootstrap (1x) -->
+  <g>
+    <rect x="286" y="170" width="110" height="90" rx="14" fill="#f7eefb" stroke="#7b1fa2" stroke-width="2.5"/>
+    <text x="341" y="212" text-anchor="middle" font-size="14" font-weight="700" fill="#7b1fa2">Bootstrap</text>
+    <text x="341" y="234" text-anchor="middle" font-size="10.5" fill="#7b1fa2" opacity="0.85">1 seule fois</text>
+  </g>
+  <line x1="396" y1="215" x2="429" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-fw2)"/>
+
+  <!-- frankenphp_handle_request (dans la boucle) -->
+  <g>
+    <rect x="429" y="170" width="130" height="90" rx="14" fill="#fdf1e6" stroke="#d9480f" stroke-width="2.5"/>
+    <text x="494" y="204" text-anchor="middle" font-size="12" font-weight="700" fill="#d9480f">frankenphp_</text>
+    <text x="494" y="220" text-anchor="middle" font-size="12" font-weight="700" fill="#d9480f">handle_request</text>
+    <text x="494" y="240" text-anchor="middle" font-size="10" fill="#d9480f" opacity="0.85">superglobales</text>
+  </g>
+  <line x1="559" y1="215" x2="592" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-fw2)"/>
+
+  <!-- Run Code (dans la boucle, état persistant) -->
+  <g>
+    <rect x="592" y="170" width="110" height="90" rx="14" fill="#fbe4d5" stroke="#bf400a" stroke-width="2.5"/>
+    <text x="647" y="212" text-anchor="middle" font-size="15" font-weight="700" fill="#bf400a">Run Code</text>
+    <text x="647" y="234" text-anchor="middle" font-size="10" fill="#bf400a" opacity="0.85">état persistant</text>
+  </g>
+  <line x1="702" y1="215" x2="735" y2="215" stroke="#888888" stroke-width="2.5" stroke-dasharray="5 4" marker-end="url(#arrow-fw2)"/>
+
+  <!-- RSHUTDOWN (1x, au recyclage du worker) -->
+  <g>
+    <rect x="735" y="170" width="120" height="90" rx="14" fill="#eef4ec" stroke="#1a7a4a" stroke-width="2.5"/>
+    <text x="795" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="#1a7a4a">RSHUTDOWN</text>
+    <text x="795" y="234" text-anchor="middle" font-size="10" fill="#1a7a4a" opacity="0.85">recyclage</text>
+  </g>
+  <line x1="855" y1="215" x2="888" y2="215" stroke="#888888" stroke-width="2.5" marker-end="url(#arrow-fw2)"/>
+
+  <!-- MSHUTDOWN -->
+  <g>
+    <rect x="888" y="170" width="92" height="90" rx="14" fill="#eef2f8" stroke="#1a4fa0" stroke-width="2.5"/>
+    <text x="934" y="220" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1a4fa0">MSHUTDOWN</text>
+  </g>
+
+  <!-- loop back arrow: Run Code -> frankenphp_handle_request -->
+  <path d="M647,260 C647,345 494,345 494,262" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#arrow-loop2)"/>
+  <rect x="456" y="353" width="230" height="24" rx="6" fill="#fafaf8" stroke="#c0392b" stroke-width="1.2"/>
+  <text x="571" y="370" text-anchor="middle" font-size="13" fill="#c0392b">requête suivante (même worker)</text>
+</svg>

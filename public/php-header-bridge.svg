@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 160" font-family="'Trebuchet MS', 'Nunito', sans-serif">
+  <defs>
+    <style>
+      .box-fill-blue   { fill: #eef2f8; }
+      .box-stroke-blue { stroke: #1a4fa0; }
+      .label-blue      { fill: #1a4fa0; }
+      .arrow-blue      { stroke: #1a4fa0; }
+      .arrowhead-blue  { fill: #1a4fa0; }
+
+      .box-fill-pivot   { fill: #f7eefb; }
+      .box-stroke-pivot { stroke: #7b1fa2; }
+      .label-pivot      { fill: #7b1fa2; }
+
+      .box-fill-green   { fill: #eef4ec; }
+      .box-stroke-green { stroke: #1a7a4a; }
+      .label-green      { fill: #1a7a4a; }
+      .arrow-green      { stroke: #1a7a4a; }
+      .arrowhead-green  { fill: #1a7a4a; }
+
+      .text-main { fill: #1c1c1c; }
+
+      .label-chip-blue  { fill: #fafaf8; stroke: #1a4fa0; }
+      .label-chip-green { fill: #fafaf8; stroke: #1a7a4a; }
+    </style>
+
+    <marker id="arrow-bridge-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead-blue"/>
+    </marker>
+    <marker id="arrow-bridge-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" class="arrowhead-green"/>
+    </marker>
+  </defs>
+
+  <!-- Moteur Zend -->
+  <g>
+    <rect x="30" y="30" width="170" height="70" rx="14" class="box-fill-blue box-stroke-blue" stroke-width="2.5"/>
+    <text x="115" y="65" text-anchor="middle" font-size="19" font-weight="700" class="label-blue">Moteur Zend</text>
+  </g>
+
+  <line x1="200" y1="67" x2="330" y2="67" class="arrow-blue" stroke-width="2.5" marker-end="url(#arrow-bridge-blue)" marker-start="url(#arrow-bridge-blue)"/>
+  <rect x="200" y="41" width="130" height="20" rx="5" class="label-chip-blue" stroke-width="1.2"/>
+  <text x="265" y="55" text-anchor="middle" font-size="9" class="label-blue" font-family="monospace">phpext_fibonacci_ptr</text>
+
+  <!-- php_fibonacci.h : le pivot -->
+  <g>
+    <rect x="330" y="30" width="300" height="100" rx="16" class="box-fill-pivot box-stroke-pivot" stroke-width="3.5"/>
+    <text x="480" y="62" text-anchor="middle" font-size="21" font-weight="700" class="label-pivot" font-family="monospace">php_fibonacci.h</text>
+    <text x="480" y="86" text-anchor="middle" font-size="13" class="text-main" opacity="0.85">contrat public : nom du module,</text>
+    <text x="480" y="106" text-anchor="middle" font-size="13" class="text-main" opacity="0.85">version, point d'enregistrement</text>
+  </g>
+
+  <line x1="630" y1="67" x2="760" y2="67" class="arrow-green" stroke-width="2.5" marker-end="url(#arrow-bridge-green)" marker-start="url(#arrow-bridge-green)"/>
+  <rect x="655" y="41" width="80" height="20" rx="5" class="label-chip-green" stroke-width="1.2"/>
+  <text x="695" y="55" text-anchor="middle" font-size="12" class="label-green" font-family="monospace">#include</text>
+
+  <!-- fibonacci.c -->
+  <g>
+    <rect x="760" y="30" width="270" height="78" rx="14" class="box-fill-green box-stroke-green" stroke-width="2.5"/>
+    <text x="895" y="62" text-anchor="middle" font-size="19" font-weight="700" class="label-green" font-family="monospace">fibonacci.c</text>
+    <text x="895" y="84" text-anchor="middle" font-size="12.5" class="text-main" opacity="0.8">définit fibonacci_module_entry</text>
+  </g>
+</svg>

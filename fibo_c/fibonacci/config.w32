@@ -1,0 +1,7 @@
+ARG_ENABLE('fibonacci', 'fibonacci support', 'no');
+
+if (PHP_FIBONACCI != 'no') {
+	AC_DEFINE('HAVE_FIBONACCI', 1, "Define to 1 if the PHP extension 'fibonacci' is available.");
+
+	EXTENSION('fibonacci', 'fibonacci.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
+}

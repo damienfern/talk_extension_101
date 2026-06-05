@@ -1,0 +1,13 @@
+services:
+  frankenphp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: frankenphp
+    entrypoint: ["tail", "-f", "/dev/null"]
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - "8080:80"
+      - "8443:443"

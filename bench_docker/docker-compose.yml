@@ -1,0 +1,10 @@
+services:
+  bench:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fibo_bench
+    entrypoint: ["tail", "-f", "/dev/null"]
+    working_dir: /app
+    volumes:
+      - ..:/app
