@@ -15,7 +15,7 @@ transition: slide-left
 # enable Comark Syntax: https://comark.dev/syntax/markdown
 comark: true
 # duration of the presentation
-duration: 35min
+duration: 40min
 ---
 
 # PHP Extension 101
@@ -46,6 +46,7 @@ Invisibles mais indispensables
   </a>
 </div>
 
+<!-- TODO : replace all fibo 7 by 30 -->
 
 <!-- 
 Intro de moi
